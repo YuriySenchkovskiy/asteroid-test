@@ -6,6 +6,7 @@ namespace ObjectPool
 {
     public class Pool : MonoBehaviour
     {
+        private const string FolderName = "---MAIN POOL---";
         private readonly Dictionary<int, Queue<PoolItem>> _items = new Dictionary<int, Queue<PoolItem>>();
         private static Pool _instance;
 
@@ -15,7 +16,7 @@ namespace ObjectPool
             {
                 if (_instance == null)
                 {
-                    var go = new GameObject("---MAIN POOL---");
+                    var go = new GameObject(FolderName);
                     _instance = go.AddComponent<Pool>();
                 }
 
@@ -23,7 +24,7 @@ namespace ObjectPool
             }
         }
 
-        public GameObject GetGameObject(GameObject go, Vector3 position, Quaternion rotation)
+        public GameObject GetGameObject(GameObject go, Quaternion rotation, Vector3 position)
         {
             var id = go.GetInstanceID(); 
             var queue = RequireQueue(id);
@@ -31,14 +32,16 @@ namespace ObjectPool
             if (queue.Count > 0)
             {
                 var pooledItem = queue.Dequeue();
-                pooledItem.transform.position = position;
+                var itemTransform = pooledItem.transform;
+                itemTransform.position = position;
+                itemTransform.rotation = rotation;
                 pooledItem.gameObject.SetActive(true);
                 pooledItem.Restart();
                 
                 return pooledItem.gameObject;
             }
             
-            var instance = SpawnUtils.Spawn(go, position, _instance.gameObject);
+            var instance = SpawnUtils.Spawn(go, position, rotation,_instance.gameObject);
             var poolItem = instance.GetComponent<PoolItem>();
             poolItem.Retain(id, this);
 

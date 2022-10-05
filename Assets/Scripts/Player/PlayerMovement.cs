@@ -1,21 +1,23 @@
+using Observer;
 using UnityEngine;
 
-namespace Controller
+namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private float _moveForwardSpeed;
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private float _screenSizeOffset;
+        [SerializeField] private GameObjectEvent _gameObjectEvent;
 
-        private float _cameraViewHalfSize;
+        private float _cameraViewSize;
         private Vector2 _direction;
         private Vector3 _framePosition;
         private Vector3 _frameVelocity;
 
         private void Awake()
         {
-            _cameraViewHalfSize = Camera.main.orthographicSize;
+            _cameraViewSize = Camera.main.orthographicSize;
         }
 
         private void FixedUpdate()
@@ -29,18 +31,22 @@ namespace Controller
         {
             _direction = direction;
         }
+
+        public void PassGoal()
+        {
+            _gameObjectEvent.Occured(gameObject);
+        }
         
         private void UseTeleport()
         {
-            
-            if (Mathf.Abs(transform.position.x) > _cameraViewHalfSize)
+            if (Mathf.Abs(transform.position.x) > _cameraViewSize)
             {
-                transform.position = new Vector3(_screenSizeOffset * _cameraViewHalfSize * 
+                transform.position = new Vector3(_screenSizeOffset * _cameraViewSize * 
                                                  Mathf.Sign(transform.position.x), transform.position.y);
             }
-            if (Mathf.Abs(transform.position.y) > _cameraViewHalfSize)
+            if (Mathf.Abs(transform.position.y) > _cameraViewSize)
             {
-                transform.position = new Vector3(transform.position.x, _screenSizeOffset * _cameraViewHalfSize * 
+                transform.position = new Vector3(transform.position.x, _screenSizeOffset * _cameraViewSize * 
                                                                        Mathf.Sign(transform.position.y));
             }
         }

@@ -41,11 +41,36 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets/Scripts/Component/Realiser.cs" />
+     <Compile Include="Assets/Scripts/Observer/FloatEvent.cs" />
      <Compile Include="Assets/Scripts/ObjectPool/Pool.cs" />
+     <Compile Include="Assets/Scripts/Player/PlayerShooter.cs" />
+     <Compile Include="Assets/Scripts/Core/Score.cs" />
+     <Compile Include="Assets/Scripts/Component/EnterEvent.cs" />
+     <Compile Include="Assets/Scripts/Player/DeathController.cs" />
+     <Compile Include="Assets/Scripts/Observer/EventListener.cs" />
+     <Compile Include="Assets/Scripts/Component/LevelController.cs" />
+     <Compile Include="Assets/Scripts/Component/EnterTrigger.cs" />
      <Compile Include="Assets/Scripts/Player/PlayerInput.cs" />
+     <Compile Include="Assets/Scripts/Observer/FloatEventListener.cs" />
+     <Compile Include="Assets/Scripts/Observer/IntEvent.cs" />
+     <Compile Include="Assets/Scripts/Observer/Event.cs" />
+     <Compile Include="Assets/Scripts/Utils/GameObjectExtensions.cs" />
+     <Compile Include="Assets/Scripts/Component/Spawn.cs" />
      <Compile Include="Assets/Scripts/ObjectPool/PoolItem.cs" />
+     <Compile Include="Assets/Scripts/Core/SpawnModel.cs" />
      <Compile Include="Assets/Scripts/Utils/SpawnUtils.cs" />
+     <Compile Include="Assets/Scripts/Observer/IntEventListener.cs" />
      <Compile Include="Assets/Scripts/Player/PlayerMovement.cs" />
+     <Compile Include="Assets/Scripts/Core/ShootModel.cs" />
+     <Compile Include="Assets/Scripts/Enemy/Asteroid.cs" />
+     <Compile Include="Assets/Scripts/Component/ReloadLevel.cs" />
+     <Compile Include="Assets/Scripts/Component/SpawnList.cs" />
+     <Compile Include="Assets/Scripts/Enemy/DestroyController.cs" />
+     <Compile Include="Assets/Scripts/Component/SpinObject.cs" />
+     <Compile Include="Assets/Scripts/Component/GameController.cs" />
+     <Compile Include="Assets/Scripts/Observer/GameObjectEvent.cs" />
+     <Compile Include="Assets/Scripts/Observer/GameObjectEventListener.cs" />
      <Reference Include="UnityEngine">
      <HintPath>/Applications/Unity/Hub/Editor/2021.3.5f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
      </Reference>
