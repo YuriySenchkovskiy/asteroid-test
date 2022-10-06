@@ -5,6 +5,7 @@ namespace UI
 {
     public class InformationPanel : MonoBehaviour
     {
+        [Header("General")]
         [SerializeField] private TextMeshProUGUI _coordinates;
         [SerializeField] private TextMeshProUGUI _angle;
         [SerializeField] private TextMeshProUGUI _speed;

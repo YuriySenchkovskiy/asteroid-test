@@ -5,6 +5,7 @@ namespace Observer
 {
     public class VectorEventListener : MonoBehaviour
     {
+        [Header("General")]
         [SerializeField] private VectorEvent Event;
         [SerializeField] private UnityEvent<Vector3> Response;
 

@@ -5,6 +5,7 @@ namespace Observer
 {
     public class IntEventListener : MonoBehaviour
     {
+        [Header("General")]
         [SerializeField] private IntEvent Event;
         [SerializeField] private UnityEvent<int> Response;
 

@@ -1,5 +1,6 @@
 using Core;
 using Observer;
+using UI;
 using UnityEngine;
 
 namespace Component
@@ -13,10 +14,11 @@ namespace Component
         [Header("Ufo")]
         [SerializeField] private Spawn[] _ufoSpawners;
         [SerializeField] private float _timeBetweenUfoSpawn;
-
-        [Header("Event")]
-        [SerializeField] private IntEvent _counted;
         
+        [Header("UI")]
+        [SerializeField] private InformationPanel _informationPanel;
+        [SerializeField] private GameOverPanel _gameOverPanel;
+
         private SpawnModel _asteroid;
         private SpawnModel _ufo;
 
@@ -40,9 +42,18 @@ namespace Component
             _ufo.NumberSelected -= UfoSpawn;
         }
 
-        public void SendGameResult()
+        public void ShowGameOverPanel()
         {
-            _counted.Occured(ScoreModel.NumberOfDefeatedEnemies);
+            _informationPanel.gameObject.SetActive(false);
+            _gameOverPanel.gameObject.SetActive(true);
+            _gameOverPanel.SetTotalScore(ScoreModel.NumberOfDefeatedEnemies);
+        }
+
+        public void ReloadLevel()
+        {
+            var reloadLevel = new ReloadLevel();
+            ScoreModel.ClearResult();
+            reloadLevel.Reload();
         }
 
         private void AsteroidSpawn(int number)

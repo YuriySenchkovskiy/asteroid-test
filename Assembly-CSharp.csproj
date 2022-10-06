@@ -68,7 +68,6 @@
      <Compile Include="Assets/Scripts/Component/SpawnList.cs" />
      <Compile Include="Assets/Scripts/Enemy/DestroyController.cs" />
      <Compile Include="Assets/Scripts/Component/SpinObject.cs" />
-     <Compile Include="Assets/Scripts/Component/GameController.cs" />
      <Compile Include="Assets/Scripts/Observer/GameObjectEvent.cs" />
      <Compile Include="Assets/Scripts/Observer/GameObjectEventListener.cs" />
      <Compile Include="Assets/Scripts/Enemy/Ufo.cs" />
@@ -77,6 +76,7 @@
      <Compile Include="Assets/Scripts/UI/InformationPanel.cs" />
      <Compile Include="Assets/Scripts/Observer/VectorEvent.cs" />
      <Compile Include="Assets/Scripts/Observer/VectorEventListener.cs" />
+     <Compile Include="Assets/Scripts/UI/GameOverPanel.cs" />
      <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />

@@ -8,5 +8,10 @@ namespace Core
         {
             NumberOfDefeatedEnemies++;
         }
+
+        public static void ClearResult()
+        {
+            NumberOfDefeatedEnemies = 0;
+        }
     }
 }

@@ -5,6 +5,7 @@ namespace Observer
 {
     public class GameObjectEventListener : MonoBehaviour
     {
+        [Header("General")]
         [SerializeField] private GameObjectEvent Event;
         [SerializeField] private UnityEvent<GameObject> Response;
 

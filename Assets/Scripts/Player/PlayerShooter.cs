@@ -25,6 +25,10 @@ namespace Player
             _shootModel = new ShootModel(_laserNumber, _laserWaitTime);
             _shootModel.Timer += SendTimer;
             _shootModel.LaserCharges += SendCharges;
+        }
+
+        private void Start()
+        {
             SendCharges(_laserNumber);
             SendTimer(0f);
         }

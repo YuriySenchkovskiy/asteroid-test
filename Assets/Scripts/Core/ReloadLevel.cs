@@ -4,7 +4,7 @@ namespace Core
 {
     public class ReloadLevel
     {
-        public void ReloadInGameMenu()
+        public void Reload()
         {
             var scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);

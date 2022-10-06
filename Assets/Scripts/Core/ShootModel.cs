@@ -27,19 +27,11 @@ namespace Core
 
         public bool GetLaserStatus()
         {
-            if (_currentLaserNumber > 0)
-            {
-                ChangeLaserNumber(-_laserStep);
-                return true;
-            }
+            if (_currentLaserNumber <= 0) 
+                return false;
             
-            if (!_isLaserFilling)
-            {
-                _isLaserFilling = true;
-                FillLaser();
-            }
-            
-            return false;
+            ChangeLaserNumber(-_laserStep);
+            return true;
         }
 
         public void MakeShoot(Transform transformParent, Transform transform, GameObject prefab, float _speed)
@@ -78,7 +70,19 @@ namespace Core
         private void ChangeLaserNumber(int number)
         {
             _currentLaserNumber += number;
+
+            if (_currentLaserNumber == 0 && !_isLaserFilling)
+            {
+                ChangeFillingStatus();
+            }
+            
             LaserCharges?.Invoke(_currentLaserNumber);
+        }
+
+        private void ChangeFillingStatus()
+        {
+            _isLaserFilling = true;
+            FillLaser(); 
         }
     }
 }
