@@ -320,4 +320,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 7877813489579484942}
-  _gameEnded: {fileID: 0}
+  _gameEnded: {fileID: 11400000, guid: d678b3d2fa42948e9982b3c3a2cd7ea4, type: 2}

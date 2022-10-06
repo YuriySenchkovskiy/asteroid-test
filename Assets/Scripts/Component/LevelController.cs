@@ -6,23 +6,38 @@ namespace Component
 {
     public class LevelController : MonoBehaviour
     {
-        [SerializeField] private Spawn[] _spawners;
-        [SerializeField] private float _timeBetweenSpawn;
+        [Header("Asteroid")]
+        [SerializeField] private Spawn[] _asteroidSpawners;
+        [SerializeField] private float _timeBetweenAsteroidSpawn;
+        
+        [Header("Ufo")]
+        [SerializeField] private Spawn[] _ufoSpawners;
+        [SerializeField] private float _timeBetweenUfoSpawn;
+        
+        [Header("Score")]
         [SerializeField] private IntEvent _counted;
         
-        private SpawnModel _spawnModel;
+        private SpawnModel _asteroid;
+        private SpawnModel _ufo;
 
         private void Awake()
         {
-            _spawnModel = new SpawnModel(_spawners.Length, _timeBetweenSpawn);
-            _spawnModel.NumberSelected += Spawn;
-            _spawnModel.StartSpawn();
+            _asteroid = new SpawnModel(_asteroidSpawners.Length, _timeBetweenAsteroidSpawn);
+            _asteroid.NumberSelected += AsteroidSpawn;
+            _asteroid.StartSpawn();
+            
+            _ufo = new SpawnModel(_ufoSpawners.Length, _timeBetweenUfoSpawn);
+            _ufo.NumberSelected += UfoSpawn;
+            _ufo.StartSpawn();
         }
 
         private void OnDisable()
         {
-            _spawnModel.ChangeGameStatus();
-            _spawnModel.NumberSelected -= Spawn;
+            _asteroid.ChangeGameStatus();
+            _asteroid.NumberSelected -= AsteroidSpawn;
+            
+            _ufo.ChangeGameStatus();
+            _ufo.NumberSelected -= UfoSpawn;
         }
 
         public void SendGameResult()
@@ -30,9 +45,14 @@ namespace Component
             _counted.Occured(Score.NumberOfDefeatedEnemies);
         }
 
-        private void Spawn(int number)
+        private void AsteroidSpawn(int number)
         {
-            _spawners[number].SpawnInstance();
+            _asteroidSpawners[number].SpawnInstance();
+        }
+        
+        private void UfoSpawn(int number)
+        {
+            _ufoSpawners[number].SpawnInstance();
         }
     }
 }
