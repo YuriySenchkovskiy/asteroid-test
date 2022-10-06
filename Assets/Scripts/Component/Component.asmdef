@@ -1,0 +1,21 @@
+{
+    "name": "Component",
+    "rootNamespace": "",
+    "references": [
+        "GUID:03ca9acd0f0174113abbc6e3d6d26cda",
+        "GUID:cf756528090cd4a4f95c22afa003c57c",
+        "GUID:6bd082d3c51274a49a5699363d1de8b2",
+        "GUID:b27a069242c2a4b5ba787682f453e0c8",
+        "GUID:4f7a618c3032e419b88c57f3d51632b3",
+        "GUID:d8b63aba1907145bea998dd612889d6b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

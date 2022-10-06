@@ -1,0 +1,16 @@
+{
+    "name": "ObjectPool",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4f7a618c3032e419b88c57f3d51632b3"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

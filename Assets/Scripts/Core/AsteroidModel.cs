@@ -42,7 +42,7 @@ namespace Core
 
         public Vector3 GetAsteroidPosition()
         {
-            return _position += _direction * Time.deltaTime * _speed;
+            return _position += _direction.normalized * Time.deltaTime * _speed;
         }
     }
 }
