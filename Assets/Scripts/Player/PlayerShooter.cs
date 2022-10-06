@@ -53,7 +53,7 @@ namespace Player
         private void Shoot(GameObject prefab)
         {
             var transformParent = GetComponentInParent<Transform>();
-            _shootModel.MakeShoot(transformParent, transform, prefab, _speed);
+            _shootModel.CalculateShoot(transformParent, transform, prefab, _speed);
         }
 
         private void SendTimer(float time)

@@ -1,4 +1,5 @@
 using System;
+using Core;
 using Observer;
 using UnityEngine;
 
@@ -16,17 +17,14 @@ namespace Player
         [SerializeField] private VectorEvent _coordinates;
         [SerializeField] private FloatEvent _angle;
         [SerializeField] private FloatEvent _speed;
-
-        private float _halfAcceleration;
-        private float _cameraViewSize;
+        
         private Vector2 _direction;
-        private Vector3 _framePosition;
-        private Vector3 _frameVelocity;
+        private MovementModel _movementModel;
 
         private void Awake()
         {
-            _halfAcceleration = 0.5f;
-            _cameraViewSize = Camera.main.orthographicSize;
+            _movementModel = new MovementModel(transform, _moveForwardSpeed, _screenSizeOffset, _rotationSpeed);
+            _movementModel.Speed += SendSpeed;
         }
 
         private void FixedUpdate()
@@ -36,7 +34,12 @@ namespace Player
             Rotate();
             SendData();
         }
-    
+
+        private void OnDisable()
+        {
+            _movementModel.Speed -= SendSpeed;
+        }
+
         public void SetValue(Vector2 direction)
         {
             _direction = direction;
@@ -49,34 +52,17 @@ namespace Player
         
         private void UseTeleport()
         {
-            if (Mathf.Abs(transform.position.x) > _cameraViewSize)
-            {
-                transform.position = new Vector3(_screenSizeOffset * _cameraViewSize * 
-                                                 Mathf.Sign(transform.position.x), transform.position.y);
-            }
-            if (Mathf.Abs(transform.position.y) > _cameraViewSize)
-            {
-                transform.position = new Vector3(transform.position.x, _screenSizeOffset * _cameraViewSize * 
-                                                                       Mathf.Sign(transform.position.y));
-            }
+            _movementModel.TrackTeleportLocation();
         }
 
         private void MoveForward()
         {
-            _framePosition = transform.position;
-            float _rawMovementTowards = Mathf.Clamp(_direction.y, 0, 1);
-            Vector3 rawAcceleration = _moveForwardSpeed * _rawMovementTowards * transform.up;
-            transform.position += _frameVelocity * Time.deltaTime + rawAcceleration * Mathf.Pow(Time.deltaTime, 2) * _halfAcceleration;
-            
-            _frameVelocity = (transform.position - _framePosition) / Time.deltaTime;
-            var currentSpeed = (float)Math.Round(_frameVelocity.magnitude, 2);
-            _speed.Occured(currentSpeed);
+            _movementModel.MovePlayer(_direction);
         }
     
         private void Rotate()
         {
-            var rotationVector = Vector3.forward * -_direction.x * Time.deltaTime * _rotationSpeed;
-            transform.Rotate(rotationVector);
+            _movementModel.RotatePlayer(_direction);
         }
 
         private void SendData()
@@ -84,6 +70,11 @@ namespace Player
             _coordinates.Occured(transform.position);
             var currentZAngle = (float)Math.Round(transform.rotation.eulerAngles.z, 2);
             _angle.Occured(currentZAngle);
+        }
+
+        private void SendSpeed(float speed)
+        {
+            _speed.Occured(speed);
         }
     }
 }

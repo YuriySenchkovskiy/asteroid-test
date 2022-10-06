@@ -34,7 +34,7 @@ namespace Core
             return true;
         }
 
-        public void MakeShoot(Transform transformParent, Transform transform, GameObject prefab, float _speed)
+        public void CalculateShoot(Transform transformParent, Transform transform, GameObject prefab, float _speed)
         {
             var instance = Pool.Instance.GetGameObject(prefab, transformParent.rotation, transform.position);
             
