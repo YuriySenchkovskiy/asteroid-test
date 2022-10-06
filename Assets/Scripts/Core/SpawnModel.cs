@@ -1,5 +1,6 @@
-using System;
 using System.Threading.Tasks;
+using UnityEngine;
+using Random = System.Random;
 
 namespace Core
 {
@@ -9,8 +10,10 @@ namespace Core
         private int _lenght;
         private float _timeBetweenSpawn;
         private Random _random;
+        private bool _isGameOn;
 
-        public Action<int> NumberSelected;
+        public delegate void Number(int number);
+        public event Number NumberSelected;
 
         public SpawnModel(int lenght, float timeBetweenSpawn)
         {
@@ -18,13 +21,18 @@ namespace Core
             _timeBetweenSpawn = timeBetweenSpawn;
             _random = new Random();
             _multiple = 1000;
-            
-            GetSpawnNumber();
+
+            _isGameOn = true;
+        }
+
+        public void ChangeGameStatus()
+        {
+            _isGameOn = false;
         }
         
-        private async void GetSpawnNumber()
+        public async void StartSpawn()
         {
-            while (true)
+            while (_isGameOn)
             {
                 NumberSelected?.Invoke(_random.Next(_lenght));
                 await Task.Delay((int)_timeBetweenSpawn * _multiple);

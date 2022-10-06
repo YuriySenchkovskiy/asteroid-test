@@ -284,12 +284,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f90bd7b811f6428286db1a8932395afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fromX: -5
-  _toX: 5
-  _fromY: -5
-  _toY: 5
-  _asteroidCreated: {fileID: 11400000, guid: 9d529822442114363a81bc06fbe274ed, type: 2}
-  _speed: 1.2
+  _xOffset: 5
+  _yOffset: 2.5
+  _speed: 0.8
 --- !u!114 &3903241343004953570
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -154,7 +154,7 @@ MonoBehaviour:
   _moveForwardSpeed: 3
   _rotationSpeed: 90
   _screenSizeOffset: -1
-  _gameObjectEvent: {fileID: 0}
+  _gameObjectEvent: {fileID: 11400000, guid: 6ad47c6c32df74a5aa0852b2b5f43e84, type: 2}
 --- !u!114 &7877813489579484930
 MonoBehaviour:
   m_ObjectHideFlags: 0

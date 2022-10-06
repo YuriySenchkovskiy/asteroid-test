@@ -71,6 +71,8 @@
      <Compile Include="Assets/Scripts/Component/GameController.cs" />
      <Compile Include="Assets/Scripts/Observer/GameObjectEvent.cs" />
      <Compile Include="Assets/Scripts/Observer/GameObjectEventListener.cs" />
+     <Compile Include="Assets/Scripts/Enemy/Ufo.cs" />
+     <Compile Include="Assets/Scripts/Core/AsteroidModel.cs" />
      <Reference Include="UnityEngine">
      <HintPath>/Applications/Unity/Hub/Editor/2021.3.5f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
      </Reference>

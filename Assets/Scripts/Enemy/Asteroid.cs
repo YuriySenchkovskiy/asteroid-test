@@ -1,37 +1,41 @@
+using Core;
 using UnityEngine;
-using Event = Observer.Event;
 
 namespace Enemy
 {
     public class Asteroid : MonoBehaviour
     {
-        [SerializeField] private float _fromX;
-        [SerializeField] private float _toX;
-        [SerializeField] private float _fromY;
-        [SerializeField] private float _toY;
-
-        [SerializeField] private Event _asteroidCreated;
+        [SerializeField] private float _xOffset;
+        [SerializeField] private float _yOffset;
         [SerializeField] private float _speed;
         
         private Vector3 _direction;
-        
-        private void Start()
-        { 
-            _asteroidCreated.Occured();
-            _direction = GetDirection();
+        private bool _isDirectionReady;
+        private AsteroidModel _asteroidModel;
+
+        private void OnEnable()
+        {
+            _asteroidModel = new AsteroidModel(transform.position, _xOffset, _yOffset);
+            _asteroidModel.DirectionSelected += SetDirection;
+            _asteroidModel.CalculateDirection();
         }
 
         private void FixedUpdate()
         {
-            MoveAsteroid();
+            if (_isDirectionReady)
+                MoveAsteroid();
         }
-        
-        private Vector3 GetDirection()
-        {
-            Vector3 randomDirection = new Vector3(Random.Range(_fromX, _toX),
-                Random.Range(_fromY, _toY));
 
-            return randomDirection.normalized;
+        private void OnDisable()
+        {
+            _isDirectionReady = false;
+            _asteroidModel.DirectionSelected -= SetDirection;
+        }
+
+        private void SetDirection(Vector3 direction)
+        {
+            _direction = direction;
+            _isDirectionReady = true;
         }
         
         private void MoveAsteroid()
