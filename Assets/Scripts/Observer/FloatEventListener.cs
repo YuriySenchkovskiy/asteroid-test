@@ -5,8 +5,8 @@ namespace Observer
 {
     public class FloatEventListener : MonoBehaviour
     {
-        public FloatEvent Event;
-        public UnityEvent<float> Response;
+        [SerializeField] private FloatEvent Event;
+        [SerializeField] private UnityEvent<float> Response;
 
         private void OnEnable()
         {

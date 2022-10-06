@@ -1,6 +1,6 @@
 namespace Core
 {
-    public class Score
+    public class ScoreModel
     {
         public static int NumberOfDefeatedEnemies { get; private set; }
 

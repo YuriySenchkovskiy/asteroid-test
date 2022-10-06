@@ -33,6 +33,7 @@ namespace Core
         {
             while (_isGameOn)
             {
+                
                 NumberSelected?.Invoke(_random.Next(_lenght));
                 await Task.Delay((int)_timeBetweenSpawn * _multiple);
             }

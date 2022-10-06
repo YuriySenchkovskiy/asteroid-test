@@ -1,3 +1,4 @@
+using System;
 using Observer;
 using UnityEngine;
 
@@ -5,11 +6,18 @@ namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
+        [Header("General")]
         [SerializeField] private float _moveForwardSpeed;
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private float _screenSizeOffset;
-        [SerializeField] private GameObjectEvent _gameObjectEvent;
+        
+        [Header("Event")]
+        [SerializeField] private GameObjectEvent _playerPosition;
+        [SerializeField] private VectorEvent _coordinates;
+        [SerializeField] private FloatEvent _angle;
+        [SerializeField] private FloatEvent _speed;
 
+        private float _halfAcceleration;
         private float _cameraViewSize;
         private Vector2 _direction;
         private Vector3 _framePosition;
@@ -17,6 +25,7 @@ namespace Player
 
         private void Awake()
         {
+            _halfAcceleration = 0.5f;
             _cameraViewSize = Camera.main.orthographicSize;
         }
 
@@ -25,6 +34,7 @@ namespace Player
             UseTeleport();
             MoveForward();
             Rotate();
+            SendData();
         }
     
         public void SetValue(Vector2 direction)
@@ -34,7 +44,7 @@ namespace Player
 
         public void PassGoal()
         {
-            _gameObjectEvent.Occured(gameObject);
+            _playerPosition.Occured(gameObject);
         }
         
         private void UseTeleport()
@@ -55,15 +65,25 @@ namespace Player
         {
             _framePosition = transform.position;
             float _rawMovementTowards = Mathf.Clamp(_direction.y, 0, 1);
-            Vector3 trueAcceleration = _moveForwardSpeed * _rawMovementTowards * transform.up;
-            transform.position += _frameVelocity * Time.deltaTime + trueAcceleration * Mathf.Pow(Time.deltaTime, 2) * 0.5f;
+            Vector3 rawAcceleration = _moveForwardSpeed * _rawMovementTowards * transform.up;
+            transform.position += _frameVelocity * Time.deltaTime + rawAcceleration * Mathf.Pow(Time.deltaTime, 2) * _halfAcceleration;
+            
             _frameVelocity = (transform.position - _framePosition) / Time.deltaTime;
+            var currentSpeed = (float)Math.Round(_frameVelocity.magnitude, 2);
+            _speed.Occured(currentSpeed);
         }
     
         private void Rotate()
         {
             var rotationVector = Vector3.forward * -_direction.x * Time.deltaTime * _rotationSpeed;
             transform.Rotate(rotationVector);
+        }
+
+        private void SendData()
+        {
+            _coordinates.Occured(transform.position);
+            var currentZAngle = (float)Math.Round(transform.rotation.eulerAngles.z, 2);
+            _angle.Occured(currentZAngle);
         }
     }
 }

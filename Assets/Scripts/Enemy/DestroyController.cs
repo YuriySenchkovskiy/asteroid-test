@@ -7,7 +7,7 @@ namespace Enemy
     {
         public void AddScore()
         {
-            Score.AddScore();
+            ScoreModel.AddScore();
         }
     }
 }

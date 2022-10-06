@@ -5,12 +5,13 @@ namespace Component
 {
     public class GameController : MonoBehaviour
     {
-        [SerializeField] private LevelController _gameController;
+        [Header("General")]
+        [SerializeField] private GameObject _levelController;
         [SerializeField] private PlayerMovement _playerMovement;
 
         public void StartGame()
         {
-            _gameController.enabled = true;
+            _levelController.SetActive(true);
             _playerMovement.enabled = true;
         }
     }

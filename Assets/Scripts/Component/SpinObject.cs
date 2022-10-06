@@ -4,6 +4,7 @@ namespace Component
 {
     public class SpinObject : MonoBehaviour
     {
+        [Header("General")]
         [SerializeField] private float _speed;
 
         private void Update()

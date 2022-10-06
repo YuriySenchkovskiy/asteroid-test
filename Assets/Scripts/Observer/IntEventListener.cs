@@ -5,8 +5,8 @@ namespace Observer
 {
     public class IntEventListener : MonoBehaviour
     {
-        public IntEvent Event;
-        public UnityEvent<int> Response;
+        [SerializeField] private IntEvent Event;
+        [SerializeField] private UnityEvent<int> Response;
 
         private void OnEnable()
         {

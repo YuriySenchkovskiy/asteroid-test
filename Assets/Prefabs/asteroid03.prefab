@@ -55,7 +55,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4069959081968853244}
   - component: {fileID: 4069959081968853235}
-  - component: {fileID: 6978807421820844312}
   - component: {fileID: 3671730343896033372}
   - component: {fileID: 3400721392415981054}
   - component: {fileID: 3065809152228952756}
@@ -64,8 +63,9 @@ GameObject:
   - component: {fileID: 6475237405491983190}
   - component: {fileID: 4179489457807254542}
   - component: {fileID: -1688311766601781917}
+  - component: {fileID: 8617512985592224493}
   m_Layer: 9
-  m_Name: asteroid03
+  m_Name: Asteroid03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,22 +140,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &6978807421820844312
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4069959081968853234}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.031513333, y: -0.01698947}
-  serializedVersion: 2
-  m_Radius: 0.38236833
 --- !u!114 &3671730343896033372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,7 +313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _xOffset: 5
   _yOffset: 2.5
-  _speed: 0.8
+  _speed: 0.4
 --- !u!114 &-1688311766601781917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,7 +326,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2744c080e4f445d81f8c2bebe3376cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0.2
+  _speed: 0.1
+--- !u!60 &8617512985592224493
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069959081968853234}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.89, y: 0.82}
+    newSize: {x: 0.38, y: 0.37}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.25804576, y: 0.29652268}
+      - {x: 0.02769544, y: 0.37382758}
+      - {x: -0.019588709, y: 0.38465452}
+      - {x: -0.06812682, y: 0.41}
+      - {x: -0.15343659, y: 0.39652315}
+      - {x: -0.18861175, y: 0.36428213}
+      - {x: -0.43960917, y: 0.19574139}
+      - {x: -0.42343664, y: -0.14382711}
+      - {x: -0.33499998, y: -0.31}
+      - {x: -0.27691367, y: -0.3457414}
+      - {x: 0.015, y: -0.41}
+      - {x: 0.21187317, y: -0.4019138}
+      - {x: 0.39917773, y: -0.07539112}
+      - {x: 0.42613202, y: -0.046495914}
+      - {x: 0.445, y: 0.049999997}
+      - {x: 0.30152285, y: 0.26304582}
 --- !u!1 &8143304432420575871
 GameObject:
   m_ObjectHideFlags: 0

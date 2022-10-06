@@ -6,6 +6,7 @@ namespace Component
 {
     public class Spawn : MonoBehaviour
     {
+        [Header("Prefab")]
         [SerializeField] private GameObject _prefab;
 
         [ContextMenu("Spawn")]

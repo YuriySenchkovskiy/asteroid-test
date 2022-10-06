@@ -5,8 +5,8 @@ namespace Observer
 {
     public class EventListener : MonoBehaviour
     {
-        public Event Event;
-        public UnityEvent Response;
+        [SerializeField] private Event Event;
+        [SerializeField] private UnityEvent Response;
 
         private void OnEnable()
         {

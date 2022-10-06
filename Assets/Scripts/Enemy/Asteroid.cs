@@ -5,18 +5,18 @@ namespace Enemy
 {
     public class Asteroid : MonoBehaviour
     {
+        [Header("General")]
         [SerializeField] private float _xOffset;
         [SerializeField] private float _yOffset;
         [SerializeField] private float _speed;
         
-        private Vector3 _direction;
         private bool _isDirectionReady;
         private AsteroidModel _asteroidModel;
 
         private void OnEnable()
         {
-            _asteroidModel = new AsteroidModel(transform.position, _xOffset, _yOffset);
-            _asteroidModel.DirectionSelected += SetDirection;
+            _asteroidModel = new AsteroidModel(transform.position, _xOffset, _yOffset, _speed);
+            _asteroidModel.DirectionSelected += SetDirectionStatus;
             _asteroidModel.CalculateDirection();
         }
 
@@ -29,18 +29,17 @@ namespace Enemy
         private void OnDisable()
         {
             _isDirectionReady = false;
-            _asteroidModel.DirectionSelected -= SetDirection;
+            _asteroidModel.DirectionSelected -= SetDirectionStatus;
         }
 
-        private void SetDirection(Vector3 direction)
+        private void SetDirectionStatus()
         {
-            _direction = direction;
             _isDirectionReady = true;
         }
         
         private void MoveAsteroid()
         {
-            transform.position += _direction * Time.fixedDeltaTime * _speed;
+            transform.position = _asteroidModel.GetAsteroidPosition();
         }
     }
 }

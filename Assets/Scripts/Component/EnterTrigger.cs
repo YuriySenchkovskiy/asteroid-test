@@ -5,6 +5,7 @@ namespace Component
 {
     public class EnterTrigger : MonoBehaviour
     {
+        [Header("General")]
         [SerializeField] private LayerMask _layer = ~0;
         [SerializeField] private EnterEvent _action;
 

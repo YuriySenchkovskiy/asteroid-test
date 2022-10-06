@@ -1,9 +1,8 @@
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Component
+namespace Core
 {
-    public class ReloadLevel : MonoBehaviour
+    public class ReloadLevel
     {
         public void ReloadInGameMenu()
         {

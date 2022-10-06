@@ -1,4 +1,6 @@
+using System;
 using System.Threading.Tasks;
+using ObjectPool;
 using UnityEngine;
 
 namespace Core
@@ -8,10 +10,13 @@ namespace Core
         private int _startLaserNumber;
         private int _currentLaserNumber;
         private int _laserStep;
-        private float _waitTime;
         private bool _isLaserFilling;
+        
+        private float _waitTime;
+        private float _laserPrepareTime;
 
-        public float LaserPrepareTime { get; private set; }
+        public Action<float> Timer;
+        public Action<int> LaserCharges;
 
         public ShootModel(int laserNumber, float waitTime)
         {
@@ -37,6 +42,18 @@ namespace Core
             return false;
         }
 
+        public void MakeShoot(Transform transformParent, Transform transform, GameObject prefab, float _speed)
+        {
+            var instance = Pool.Instance.GetGameObject(prefab, transformParent.rotation, transform.position);
+            
+            Rigidbody2D rigidbody2D = instance.GetComponent<Rigidbody2D>();
+                
+            if (rigidbody2D != null)
+            {
+                rigidbody2D.velocity = transform.up * _speed;
+            }
+        }
+
         private async void FillLaser()
         {
             while (_currentLaserNumber < _startLaserNumber)
@@ -47,7 +64,8 @@ namespace Core
                 {
                     currentTime += Time.deltaTime;
                     var seconds = _waitTime - currentTime;
-                    LaserPrepareTime = seconds <= 0 ? 0 : seconds;
+                    _laserPrepareTime = seconds <= 0 ? 0 : seconds;
+                    Timer?.Invoke(_laserPrepareTime);
                     await Task.Yield();
                 }
                 
@@ -60,6 +78,7 @@ namespace Core
         private void ChangeLaserNumber(int number)
         {
             _currentLaserNumber += number;
+            LaserCharges?.Invoke(_currentLaserNumber);
         }
     }
 }

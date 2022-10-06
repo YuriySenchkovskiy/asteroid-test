@@ -9,12 +9,12 @@ namespace Component
         [Header("Asteroid")]
         [SerializeField] private Spawn[] _asteroidSpawners;
         [SerializeField] private float _timeBetweenAsteroidSpawn;
-        
+
         [Header("Ufo")]
         [SerializeField] private Spawn[] _ufoSpawners;
         [SerializeField] private float _timeBetweenUfoSpawn;
-        
-        [Header("Score")]
+
+        [Header("Event")]
         [SerializeField] private IntEvent _counted;
         
         private SpawnModel _asteroid;
@@ -42,7 +42,7 @@ namespace Component
 
         public void SendGameResult()
         {
-            _counted.Occured(Score.NumberOfDefeatedEnemies);
+            _counted.Occured(ScoreModel.NumberOfDefeatedEnemies);
         }
 
         private void AsteroidSpawn(int number)

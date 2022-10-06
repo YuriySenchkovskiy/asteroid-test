@@ -1,27 +1,28 @@
+using Core;
 using UnityEngine;
 
 namespace Enemy
 {
     public class Ufo : MonoBehaviour
     {
-        [SerializeField] private Observer.Event _ufoCreated;
+        [Header("General")]
         [SerializeField] private float _speed;
         
-        private GameObject _goal;
-        private Vector3 _direction;
+        [Header("Event")]
+        [SerializeField] private Observer.Event _ufoCreated;
+        
         private bool _isGoalPassed;
+        private UfoModel _ufoModel;
         
         private void OnEnable()
-        { 
+        {
             _ufoCreated.Occured();
         }
 
         private void FixedUpdate()
         {
             if (_isGoalPassed)
-            {
                 MoveUfo();
-            }
         }
 
         private void OnDisable()
@@ -31,18 +32,13 @@ namespace Enemy
 
         public void SetGoal(GameObject playerPosition)
         {
-            _goal = playerPosition;
+            _ufoModel = new UfoModel(transform.position, playerPosition, _speed);
             _isGoalPassed = true;
         }
         
         private void MoveUfo()
         {
-            if (_goal != null)
-            {
-                var directionToPlayer = _goal.transform.position - transform.position;
-                _direction = directionToPlayer.normalized;
-                transform.position += _direction * Time.fixedDeltaTime * _speed;
-            }
+            transform.position = _ufoModel.GetPosition();
         }
     }
 }

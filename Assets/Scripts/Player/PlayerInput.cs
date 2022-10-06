@@ -5,6 +5,7 @@ namespace Player
 {
     public class PlayerInput : MonoBehaviour
     {
+        [Header("General")]
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private PlayerShooter _playerShooter;
 
