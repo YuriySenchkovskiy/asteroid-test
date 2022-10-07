@@ -1,5 +1,4 @@
 using Core;
-using Observer;
 using UI;
 using UnityEngine;
 

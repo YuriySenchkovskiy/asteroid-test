@@ -8,10 +8,8 @@ namespace Component
         public void TryRelease(GameObject gameObject)
         {
             if (!gameObject.TryGetComponent(out PoolItem poolItem))
-            {
                 return;
-            }
-            
+
             poolItem.Release();
         }
     }

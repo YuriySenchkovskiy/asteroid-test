@@ -270,7 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _xOffset: 5
   _yOffset: 2.5
-  _speed: 0.4
+  _speed: 0.8
 --- !u!114 &-165529367225450587
 MonoBehaviour:
   m_ObjectHideFlags: 0

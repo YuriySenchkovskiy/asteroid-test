@@ -14,9 +14,9 @@ namespace Enemy
         private bool _isGoalPassed;
         private UfoModel _ufoModel;
         
-        private void OnEnable()
+        private void Start()
         {
-            _ufoCreated.Occured();
+            Notice();
         }
 
         private void FixedUpdate()
@@ -28,6 +28,11 @@ namespace Enemy
         private void OnDisable()
         {
             _isGoalPassed = false;
+        }
+
+        public void Notice()
+        {
+            _ufoCreated.Occured();
         }
 
         public void SetGoal(GameObject playerPosition)
