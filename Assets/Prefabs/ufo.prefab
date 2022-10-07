@@ -122,7 +122,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _restarted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1648042573063581465}
+        m_TargetAssemblyTypeName: Enemy.Ufo, Enemy
+        m_MethodName: Notice
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1546512496288763180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,8 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7c490e859c4b549c6019bd2b34ddaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ufoCreated: {fileID: 11400000, guid: 9d529822442114363a81bc06fbe274ed, type: 2}
   _speed: 2
+  _ufoCreated: {fileID: 11400000, guid: 9d529822442114363a81bc06fbe274ed, type: 2}
 --- !u!114 &424491685090769621
 MonoBehaviour:
   m_ObjectHideFlags: 0

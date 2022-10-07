@@ -35,9 +35,9 @@ namespace ObjectPool
                 var itemTransform = pooledItem.transform;
                 itemTransform.position = position;
                 itemTransform.rotation = rotation;
+                
                 pooledItem.gameObject.SetActive(true);
                 pooledItem.Restart();
-                
                 return pooledItem.gameObject;
             }
             

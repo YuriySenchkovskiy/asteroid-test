@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8b761f3e56742ef865978f13188f1cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _parent: {fileID: 7877813489579484940}
   _bulletPrefab: {fileID: 2026469017466873081, guid: c2ba8dde8746a476daa2b64c00ee82f4, type: 3}
   _laserPrefab: {fileID: 3076093834161481779, guid: 655c85828c0324462aab94963a653cec, type: 3}
   _laserNumber: 3

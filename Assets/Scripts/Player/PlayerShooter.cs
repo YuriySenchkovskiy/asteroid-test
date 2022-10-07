@@ -7,7 +7,8 @@ namespace Player
 {
     public class PlayerShooter : MonoBehaviour
     {
-        [Header("General")]
+        [Header("General")] 
+        [SerializeField] private Transform _parent;
         [SerializeField] private GameObject _bulletPrefab;
         [SerializeField] private GameObject _laserPrefab;
         [SerializeField] private int _laserNumber;
@@ -52,8 +53,7 @@ namespace Player
 
         private void Shoot(GameObject prefab)
         {
-            var transformParent = GetComponentInParent<Transform>();
-            _shootModel.CalculateShoot(transformParent, transform, prefab, _speed);
+            _shootModel.CalculateShoot(_parent, transform, prefab, _speed);
         }
 
         private void SendTimer(float time)
