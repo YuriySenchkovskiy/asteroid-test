@@ -1,6 +1,7 @@
 using Core;
 using UI;
 using UnityEngine;
+using Event = Observer.Event;
 
 namespace Component
 {
@@ -17,27 +18,35 @@ namespace Component
         [Header("UI")]
         [SerializeField] private InformationPanel _informationPanel;
         [SerializeField] private GameOverPanel _gameOverPanel;
+        [SerializeField] private Event _clicked;
+        [SerializeField] private Event _startedBefore;
 
         private SpawnModel _asteroid;
         private SpawnModel _ufo;
+        private float _asteroidTime;
+        private float _ufoTime;
+        private bool _isGameStart;
 
         private void Awake()
         {
-            _asteroid = new SpawnModel(_asteroidSpawners.Length, _timeBetweenAsteroidSpawn);
+            _informationPanel.gameObject.SetActive(true);
+            _asteroid = new SpawnModel(_asteroidSpawners.Length);
             _asteroid.NumberSelected += AsteroidSpawn;
             _asteroid.StartSpawn();
-            
-            _ufo = new SpawnModel(_ufoSpawners.Length, _timeBetweenUfoSpawn);
+
+            _ufo = new SpawnModel(_ufoSpawners.Length);
             _ufo.NumberSelected += UfoSpawn;
             _ufo.StartSpawn();
         }
 
+        private void Update()
+        {
+            Spawn();
+        }
+
         private void OnDisable()
         {
-            _asteroid.ChangeGameStatus();
             _asteroid.NumberSelected -= AsteroidSpawn;
-            
-            _ufo.ChangeGameStatus();
             _ufo.NumberSelected -= UfoSpawn;
         }
 
@@ -50,9 +59,9 @@ namespace Component
 
         public void ReloadLevel()
         {
-            var reloadLevel = new ReloadLevel();
+            _clicked.Occured();
             ScoreModel.ClearResult();
-            reloadLevel.Reload();
+            Core.ReloadLevel.Reload();
         }
 
         private void AsteroidSpawn(int number)
@@ -63,6 +72,29 @@ namespace Component
         private void UfoSpawn(int number)
         {
             _ufoSpawners[number].SpawnInstance();
+        }
+
+        private void Spawn()
+        {
+            if (_timeBetweenAsteroidSpawn > _asteroidTime)
+            {
+                _asteroidTime += Time.deltaTime;
+            }
+            else
+            {
+                _asteroid.StartSpawn();
+                _asteroidTime = 0f;
+            }
+            
+            if (_timeBetweenUfoSpawn > _ufoTime)
+            {
+                _ufoTime += Time.deltaTime;
+            }
+            else
+            {
+                _ufo.StartSpawn();
+                _ufoTime = 0f;
+            }
         }
     }
 }

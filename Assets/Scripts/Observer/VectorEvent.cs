@@ -18,7 +18,7 @@ namespace Observer
             _eventListeners.Remove(listener);
         }
 
-        public void Occured(Vector3 vector)
+        public void Occured(Vector2 vector)
         {
             foreach (var listener in _eventListeners)
             {

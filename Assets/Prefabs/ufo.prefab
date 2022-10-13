@@ -210,6 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc50ab25c3164ebbb1f4d66bca9dc70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: {fileID: 11400000, guid: a64776385edc74530a85377711a3bb69, type: 2}
 --- !u!114 &98855472909169798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7c490e859c4b549c6019bd2b34ddaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
+  _speed: 2.5
   _ufoCreated: {fileID: 11400000, guid: 9d529822442114363a81bc06fbe274ed, type: 2}
 --- !u!114 &424491685090769621
 MonoBehaviour:

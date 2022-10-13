@@ -18,7 +18,7 @@ namespace UI
         private const string LaserCharges = "Laser charges: ";
         private const string RechargeTimer = "Timer: ";
 
-        public void SetCoordinates(Vector3 coordinates)
+        public void SetCoordinates(Vector2 coordinates)
         {
             _coordinates.text = Coordinates + coordinates;
         }

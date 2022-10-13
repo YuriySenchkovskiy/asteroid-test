@@ -7,7 +7,7 @@ namespace Observer
     {
         [Header("General")]
         [SerializeField] private VectorEvent Event;
-        [SerializeField] private UnityEvent<Vector3> Response;
+        [SerializeField] private UnityEvent<Vector2> Response;
 
         private void OnEnable()
         {
@@ -19,7 +19,7 @@ namespace Observer
             Event.UnRegister(this);
         }
         
-        public void OnEventOccurs(Vector3 vector)
+        public void OnEventOccurs(Vector2 vector)
         {
             Response?.Invoke(vector);
         }

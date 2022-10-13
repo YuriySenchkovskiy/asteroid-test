@@ -1,13 +1,16 @@
+using UI;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Core
 {
-    public class ReloadLevel
+    public class ReloadLevel : MonoBehaviour
     {
-        public void Reload()
+        public static void Reload()
         {
             var scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+            var loader = FindObjectOfType<LevelLoader>();
+            loader.LoadLevel(scene.name);
         }
     }
 }

@@ -67,7 +67,7 @@ namespace Player
 
         private void SendData()
         {
-            _coordinates.Occured(transform.position);
+            _coordinates.Occured((Vector2)transform.position);
             var currentZAngle = (float)Math.Round(transform.rotation.eulerAngles.z, 2);
             _angle.Occured(currentZAngle);
         }

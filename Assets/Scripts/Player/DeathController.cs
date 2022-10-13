@@ -1,4 +1,5 @@
 using UnityEngine;
+using Event = Observer.Event;
 
 namespace Player
 {
@@ -8,10 +9,12 @@ namespace Player
         [SerializeField] private GameObject _player;
         
         [Header("Event")]
-        [SerializeField] private Observer.Event _gameEnded;
+        [SerializeField] private Event _gameEnded;
+        [SerializeField] private Event _damaged;
 
         public void StopGame()
         {
+            _damaged.Occured();
             _gameEnded.Occured();
             _player.gameObject.SetActive(false);
         }

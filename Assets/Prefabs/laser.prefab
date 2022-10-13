@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3076093834161481776}
   - component: {fileID: 3076093834161481782}
   - component: {fileID: 3076093834161481783}
+  - component: {fileID: -3816377704271992706}
+  - component: {fileID: 6527003079533603168}
   m_Layer: 8
   m_Name: Laser
   m_TagString: Untagged
@@ -139,3 +141,46 @@ MonoBehaviour:
   _restarted:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-3816377704271992706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3076093834161481779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d343113776a44b289b361409b136a7b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hitEffect: {fileID: 4691644843474559595, guid: 649b633481d7242688a41e27e9b1225a, type: 3}
+--- !u!114 &6527003079533603168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3076093834161481779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eddd62dd483a4e54a98aa3267e77e006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _layer:
+    serializedVersion: 2
+    m_Bits: 512
+  _action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3816377704271992706}
+        m_TargetAssemblyTypeName: Component.DamageDealer, Component
+        m_MethodName: PlayHitEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

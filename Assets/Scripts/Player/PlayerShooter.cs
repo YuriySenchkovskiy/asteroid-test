@@ -2,6 +2,7 @@ using System;
 using Core;
 using Observer;
 using UnityEngine;
+using Event = Observer.Event;
 
 namespace Player
 {
@@ -18,6 +19,7 @@ namespace Player
         [Header("Event")] 
         [SerializeField] private FloatEvent _timer;
         [SerializeField] private IntEvent _charge;
+        [SerializeField] private Event _shoot;
 
         private ShootModel _shootModel;
 
@@ -53,6 +55,7 @@ namespace Player
 
         private void Shoot(GameObject prefab)
         {
+            _shoot.Occured();   
             _shootModel.CalculateShoot(_parent, transform, prefab, _speed);
         }
 

@@ -52,6 +52,7 @@ MonoBehaviour:
   _speed: 5
   _timer: {fileID: 11400000, guid: 68596a3517a244004a1214c57184e99f, type: 2}
   _charge: {fileID: 11400000, guid: cf157275f76e143b590ade5f9f0b8fac, type: 2}
+  _shoot: {fileID: 11400000, guid: d865c710a20a04965a32b2845d003d8c, type: 2}
 --- !u!1 &7877813489579484942
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,8 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1066a47d8754b5187a2396ae02cbdaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveForwardSpeed: 3
-  _rotationSpeed: 90
+  _moveForwardSpeed: 4
+  _rotationSpeed: 150
   _screenSizeOffset: -1
   _playerPosition: {fileID: 11400000, guid: 6ad47c6c32df74a5aa0852b2b5f43e84, type: 2}
   _coordinates: {fileID: 11400000, guid: af63bda2b4c91428391cb2e2eaa1c9d6, type: 2}
@@ -245,6 +246,7 @@ GameObject:
   - component: {fileID: 7877813489994038242}
   - component: {fileID: 7877813489994038243}
   - component: {fileID: 6815012339284505617}
+  - component: {fileID: 2805281491605465817}
   m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
@@ -285,6 +287,18 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2805281491605465817}
+        m_TargetAssemblyTypeName: Component.DamageDealer, Component
+        m_MethodName: PlayHitEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 7877813489994038243}
         m_TargetAssemblyTypeName: Player.DeathController, Assembly-CSharp
         m_MethodName: StopGame
@@ -311,6 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 7877813489579484942}
   _gameEnded: {fileID: 11400000, guid: d678b3d2fa42948e9982b3c3a2cd7ea4, type: 2}
+  _damaged: {fileID: 11400000, guid: a64776385edc74530a85377711a3bb69, type: 2}
 --- !u!60 &6815012339284505617
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -356,3 +371,16 @@ PolygonCollider2D:
       - {x: 0.43789387, y: 0.059819818}
       - {x: 0.3659966, y: -0.014585212}
       - {x: 0.1152581, y: 0.13341919}
+--- !u!114 &2805281491605465817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7877813489994038254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d343113776a44b289b361409b136a7b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hitEffect: {fileID: 4691644843474559595, guid: 649b633481d7242688a41e27e9b1225a, type: 3}
